@@ -39,11 +39,11 @@ fun main() {
     val permanentEmployee: Boolean = true
 
     // Display - Header
-    println("")
+    println()
     println("==============================")
-    println("     Employee Information")
+    println("Employee Information")
     println("==============================")
-    println("")
+    println()
 
     // Display - Values
     println("Employee Name  : $employeeName")
