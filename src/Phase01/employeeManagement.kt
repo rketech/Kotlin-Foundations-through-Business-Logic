@@ -31,12 +31,12 @@ package Phase01
 fun main() {
     // Declaring Variables
     // Since for this version / session none of the variables are been reassigned, hence val
-    val employeeName: String = "Rakesh Sharma"
-    val employeeID: String = "EMP101"
-    val age: Int = 40
-    val department: String = "Sales"
-    val salary: Double = 45000.00
-    val permanentEmployee: Boolean = true
+    val employeeName = "Rakesh Sharma"
+    val employeeID = "EMP101"
+    val age = 40
+    val department = "Sales"
+    val salary = 45000.00
+    val permanentEmployee = true
 
     // Display - Header
     println()
