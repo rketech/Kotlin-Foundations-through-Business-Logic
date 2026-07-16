@@ -40,9 +40,9 @@ fun main() {
 
     // Display - Header
     println()
-    println("==============================")
+    println("=============================")
     println("Employee Information")
-    println("==============================")
+    println("=============================")
     println()
 
     // Display - Values
