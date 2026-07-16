@@ -1,4 +1,4 @@
-package Phase01
+package phase01
 
 /*
     Coding Task
@@ -36,7 +36,7 @@ fun main() {
     val age = 40
     val department = "Sales"
     val salary = 45000.00
-    val permanentEmployee = true
+    val ispermanentEmployee = true
 
     // Display - Header
     println()
@@ -51,5 +51,5 @@ fun main() {
     println("Age            : $age")
     println("Department     : $department")
     println("Salary         : $salary")
-    println("Permanent      : $permanentEmployee")
+    println("Permanent      : $ispermanentEmployee")
 }
