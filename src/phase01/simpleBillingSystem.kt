@@ -162,9 +162,11 @@ fun main() {
     print("Enter The Quantity Sold          :   ")
     val quantity = readln().toInt()
 
-    // Calculating Values
+    // Configuration
     val gstPercentage = 5.0
     val discountPercentage = 10.0
+
+    // Calculating Values
     val subTotal = price * quantity
     val gstAmount = subTotal * (gstPercentage / 100)
     val discountAmount = subTotal * (discountPercentage / 100)
