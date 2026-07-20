@@ -74,7 +74,7 @@ IMP : Before writing the code, I want you to do one thing that professional deve
 
 */
 
-fun displayTicketInformation(customerCategory: String, ticketPrice: Int) {
+fun displayTicketInformation(customerName: String, customerCategory: String, ticketPrice: Int) {
     println()
     println("-------------------------------------------------------")
     println("Special Offer Ticket Price for you being $customerCategory : $ticketPrice")
@@ -122,6 +122,6 @@ fun main() {
             return
         }
     }
-    displayTicketInformation(customerCategory, ticketPrice)
+    displayTicketInformation(customerName, customerCategory, ticketPrice)
 }
 
