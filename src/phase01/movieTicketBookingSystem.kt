@@ -77,7 +77,7 @@ IMP : Before writing the code, I want you to do one thing that professional deve
 fun displayTicketInformation(customerName: String, customerCategory: String, ticketPrice: Int) {
     println()
     println("-------------------------------------------------------")
-    println("Special Offer Ticket Price for you being $customerCategory : $ticketPrice")
+    println("$customerName, Special Offer Ticket Price for you being $customerCategory : $ticketPrice")
     println("-------------------------------------------------------")
 }
 
