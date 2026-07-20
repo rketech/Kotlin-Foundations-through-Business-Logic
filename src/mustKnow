@@ -1,0 +1,16 @@
+Every single project—whether it's a console app, a Jetpack Compose app, or a complete Android application—will begin with these six steps:
+
+    Business Problem
+    Requirements
+    Data Identification
+    Business Rules
+    Algorithm / Flow
+    Implementation
+
+Only after these six steps will we write code.
+
+This is how professional engineers avoid writing code that solves the wrong problem.
+It also aligns perfectly with the software architecture mental model you've committed to following,
+so every new topic will fit into a consistent way of thinking rather than feeling like isolated Kotlin syntax.
+
+---------------------------------------------
