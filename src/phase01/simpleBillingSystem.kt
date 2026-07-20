@@ -147,9 +147,9 @@ package phase01
 fun main() {
     // Header
     println()
-    println("============================")
+    println("=============================")
     println("RK Mart Billing System")
-    println("============================")
+    println("=============================")
     println()
 
     // User Input
