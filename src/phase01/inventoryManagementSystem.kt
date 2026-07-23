@@ -31,8 +31,7 @@ package phase01
         minimumStock    Int         val
         stockStatus     String      val
 
-    Step 2 - Algorithm
-        Algorithm in your own words.
+    Step 2 - Algorithm in your own words.
             START
             Read Product Name
             Read Current Stock
