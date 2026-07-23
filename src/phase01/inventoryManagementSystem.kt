@@ -92,26 +92,43 @@ fun main() {
     println("--------------------------------------------------")
     println()
 
+    val productNames = mutableListOf<String>()
+    val currentStocks = mutableListOf<Int>()
+    val minimumStocks = mutableListOf<Int>()
+    val stockStatuses = mutableListOf<String>()
+
     print("How many products do you want to check? : ")
     val totalProduct = readln().toInt()
 
-    for (productNumber in 0 until totalProduct) {
+
+    for (productNumber in 0..totalProduct) {
+
+        println()
         println("Enter Details for Product ${productNumber + 1}")
+        println()
+
         // Input
         print("Product Name             :   ")
-        val productName = readln()
+        val productNameLocal = readln()
+        productNames.add(productNameLocal)
+
 
         print("Current Stock Quantity   :   ")
-        val currentStock = readln().toInt()
+        val currentStockLocal = readln().toInt()
+        currentStocks.add(currentStockLocal)
 
         print("Minimum Stock Quantity   :   ")
-        val minimumStock = readln().toInt()
+        val minimumStockLocal = readln().toInt()
+        minimumStocks.add(minimumStockLocal)
 
         // Business Logic (Process)
-        val stockStatus = getStockStatus(currentStock, minimumStock)
+        val stockStatusLocal = getStockStatus(currentStockLocal, minimumStockLocal)
+        stockStatuses.add(stockStatusLocal)
+    }
 
+    for (index in productNames.indices) {
         // Presentation (Output)
-        displayInventoryReport(productName, currentStock, minimumStock, stockStatus)
+        displayInventoryReport(productNames[index], currentStocks[index], minimumStocks[index], stockStatuses[index])
     }
 }
 
