@@ -82,30 +82,37 @@ fun displayInventoryReport(productName: String, currentStock: Int, minimumStock:
     println("Current Stock  : $currentStock")
     println("Minimum Stock  : $minimumStock")
     println("Stock Status   : $stockStatus")
+    println()
 }
 
 fun main() {
     println()
     println("--------------------------------------------------")
-    println("   RK Inventory Management System (Version 1)")
+    println("   RK Inventory Management System (Version 2)")
     println("--------------------------------------------------")
     println()
 
-    // Input
-    print("Product Name             :   ")
-    val productName = readln()
+    print("How many products do you want to check? : ")
+    val totalProduct = readln().toInt()
 
-    print("Current Stock Quantity   :   ")
-    val currentStock = readln().toInt()
+    for (productNumber in 0 until totalProduct) {
+        println("Enter Details for Product ${productNumber + 1}")
+        // Input
+        print("Product Name             :   ")
+        val productName = readln()
 
-    print("Minimum Stock Quantity   :   ")
-    val minimumStock = readln().toInt()
+        print("Current Stock Quantity   :   ")
+        val currentStock = readln().toInt()
 
-    // Business Logic (Process)
-    val stockStatus = getStockStatus(currentStock, minimumStock)
+        print("Minimum Stock Quantity   :   ")
+        val minimumStock = readln().toInt()
 
-    // Presentation (Output)
-    displayInventoryReport(productName, currentStock, minimumStock, stockStatus)
+        // Business Logic (Process)
+        val stockStatus = getStockStatus(currentStock, minimumStock)
+
+        // Presentation (Output)
+        displayInventoryReport(productName, currentStock, minimumStock, stockStatus)
+    }
 }
 
 /*
