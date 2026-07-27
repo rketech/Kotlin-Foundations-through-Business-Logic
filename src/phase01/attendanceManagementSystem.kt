@@ -126,13 +126,13 @@ fun getStudentAttendance(studentNames: MutableList<String>, attendanceStatuses: 
         } else if (!studentNameLocal.equals("EXIT", ignoreCase = true)) {
 
             print("Attendance Status[P/A/L] :   ")
-            val attendanceStatusLocal = readln()
-            if (attendanceStatusLocal.isNotBlank()) {
+            val attendanceStatusLocal = readln().uppercase()
+            if (attendanceStatusLocal.isBlank() || attendanceStatusLocal !in listOf("P", "A", "L")) {
+                println("Invalid Attendance Status")
+                continue
+            } else {
                 studentNames.add(studentNameLocal)
                 attendanceStatuses.add(attendanceStatusLocal)
-            } else {
-                println("Attendance Cannot Be Blank...")
-                continue
             }
         } else
             break
@@ -143,7 +143,7 @@ fun getStudentAttendance(studentNames: MutableList<String>, attendanceStatuses: 
 fun getPresentStudents(attendanceStatuses: List<String>): Int {
     var countPresent = 0
     for (result in attendanceStatuses) {
-        if (result == "P" || result == "p") {
+        if (result == "P") {
             countPresent++
         }
     }
@@ -153,7 +153,7 @@ fun getPresentStudents(attendanceStatuses: List<String>): Int {
 fun getAbsentStudents(attendanceStatuses: List<String>): Int {
     var countAbsent = 0
     for (result in attendanceStatuses) {
-        if (result == "A" || result == "a") {
+        if (result == "A") {
             countAbsent++
         }
     }
@@ -163,7 +163,7 @@ fun getAbsentStudents(attendanceStatuses: List<String>): Int {
 fun getLeaveStudents(attendanceStatuses: List<String>): Int {
     var countLeave = 0
     for (result in attendanceStatuses) {
-        if (result == "L" || result == "l") {
+        if (result == "L") {
             countLeave++
         }
     }
