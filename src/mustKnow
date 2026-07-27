@@ -14,3 +14,58 @@ It also aligns perfectly with the software architecture mental model you've comm
 so every new topic will fit into a consistent way of thinking rather than feeling like isolated Kotlin syntax.
 
 ---------------------------------------------
+
+add this header to every file:
+
+/*
+    Project:
+    Version:
+    Topics Covered:
+    Business Problem:
+    Business Rules:
+    Architecture:
+    Author:
+    Date:
+*/
+
+It's a habit used in many teams to make code easier to understand and maintain.
+
+Also begin adding version history at the bottom of the header:
+
+/*
+Version History
+---------------
+v1.0
+- Initial Implementation
+
+v1.1
+- Added input validation
+
+v1.2
+- Refactored using Data Class
+
+v2.0
+- Migrated to Android (Jetpack Compose)
+*/
+
+----------------------------------------------
+
+Every project will have 7 fixed sections.
+
+1. Project Information
+
+2. Business Problem
+
+3. Requirements Gathering
+
+4. Business Rules
+
+5. Data Identification
+
+6. Algorithm
+
+7. Architecture
+
+--------------------
+Code Starts Here
+--------------------
