@@ -130,17 +130,24 @@ fun main() {
     do {
         println()
         print("Enter Student Name       :   ")
-        studentNames.add(readln())
+        val studentName = readln()
 
-        if (!studentNames.last().equals("EXIT", ignoreCase = true)) {
-            if (studentNames.last().isBlank()) {
-                continue
-            } else {
-                print("Attendance Status[P/A/L] :   ")
-                attendanceStatuses.add(readln())
-            }
+        if (studentName.isBlank()) {
+            continue
+        } else if (!studentName.equals("EXIT", ignoreCase = true)) {
+            studentNames.add(studentName)
+            print("Attendance Status[P/A/L] :   ")
+            attendanceStatuses.add(readln())
         } else
             break
 
     } while (true)
+
+    println()
+    println("---Attendance Report---")
+    for (report in studentNames.indices) {
+        println("Student Name       : ${studentNames[report]}")
+        println("Attendance Status  : ${attendanceStatuses[report]}")
+        println()
+    }
 }
