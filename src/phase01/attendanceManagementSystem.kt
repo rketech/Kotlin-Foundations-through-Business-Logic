@@ -151,9 +151,6 @@ fun main() {
 
     val studentNames = mutableListOf<String>()
     val attendanceStatuses = mutableListOf<String>()
-    val presentStudents: Int
-    val absentStudents: Int
-    val leaveStudents: Int
 
     // Input
     do {
@@ -191,14 +188,14 @@ fun main() {
     println()
     println("Total Students     :   ${studentNames.size}")
 
-    val countPresent = getPresentStudents(attendanceStatuses)
-    println("Present Students   :   $countPresent")
+    val presentStudents = getPresentStudents(attendanceStatuses)
+    println("Present Students   :   $presentStudents")
 
-    val countAbsent = getAbsentStudents(attendanceStatuses)
-    println("Absent Students    :   $countAbsent")
+    val absentStudents = getAbsentStudents(attendanceStatuses)
+    println("Absent Students    :   $absentStudents")
 
-    val countLeave = getLeaveStudents(attendanceStatuses)
-    println("Leave Students     :   $countLeave")
+    val leaveStudents = getLeaveStudents(attendanceStatuses)
+    println("Leave Students     :   $leaveStudents")
     println()
     println("----------------")
 
