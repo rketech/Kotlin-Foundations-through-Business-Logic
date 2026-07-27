@@ -1,5 +1,7 @@
 package phase01
 
+import kotlin.text.uppercase
+
 /*
     Project Information
     -------------------
@@ -112,6 +114,32 @@ package phase01
     Architecture
     --------------
 */
+fun getStudentAttendance(studentNames: MutableList<String>, attendanceStatuses: MutableList<String>) {
+    // Input
+    do {
+        println()
+        print("Enter Student Name       :   ")
+        val studentNameLocal = readln()
+
+        if (studentNameLocal.isBlank()) {
+            continue
+        } else if (!studentNameLocal.equals("EXIT", ignoreCase = true)) {
+
+            print("Attendance Status[P/A/L] :   ")
+            val attendanceStatusLocal = readln()
+            if (attendanceStatusLocal.isNotBlank()) {
+                studentNames.add(studentNameLocal)
+                attendanceStatuses.add(attendanceStatusLocal)
+            } else {
+                println("Attendance Cannot Be Blank...")
+                continue
+            }
+        } else
+            break
+
+    } while (true)
+}
+
 fun getPresentStudents(attendanceStatuses: List<String>): Int {
     var countPresent = 0
     for (result in attendanceStatuses) {
@@ -142,40 +170,7 @@ fun getLeaveStudents(attendanceStatuses: List<String>): Int {
     return countLeave
 }
 
-fun main() {
-    println()
-    println("-------------------------------")
-    println("RK Attendance Management System")
-    println("-------------------------------")
-    println()
-
-    val studentNames = mutableListOf<String>()
-    val attendanceStatuses = mutableListOf<String>()
-
-    // Input
-    do {
-        println()
-        print("Enter Student Name       :   ")
-        val studentNameLocal = readln()
-
-        if (studentNameLocal.isBlank()) {
-            continue
-        } else if (!studentNameLocal.equals("EXIT", ignoreCase = true)) {
-
-            print("Attendance Status[P/A/L] :   ")
-            val attendanceStatusLocal = readln()
-            if (attendanceStatusLocal.isNotBlank()) {
-                studentNames.add(studentNameLocal)
-                attendanceStatuses.add(attendanceStatusLocal)
-            } else {
-                println("Attendance Cannot Be Blank...")
-                continue
-            }
-        } else
-            break
-
-    } while (true)
-
+fun printAttendanceReport(studentNames: MutableList<String>, attendanceStatuses: MutableList<String>) {
     println()
     println("---Attendance Report---")
     println()
@@ -198,5 +193,19 @@ fun main() {
     println("Leave Students     :   $leaveStudents")
     println()
     println("----------------")
+}
 
+fun main() {
+    println()
+    println("-------------------------------")
+    println("RK Attendance Management System")
+    println("-------------------------------")
+    println()
+
+    val studentNames = mutableListOf<String>()
+    val attendanceStatuses = mutableListOf<String>()
+
+    getStudentAttendance(studentNames, attendanceStatuses)
+
+    printAttendanceReport(studentNames, attendanceStatuses)
 }
