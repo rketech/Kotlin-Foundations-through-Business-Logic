@@ -112,6 +112,35 @@ package phase01
     Architecture
     --------------
 */
+fun getPresentStudents(attendanceStatuses: List<String>): Int {
+    var countPresent = 0
+    for (result in attendanceStatuses) {
+        if (result == "P" || result == "p") {
+            countPresent++
+        }
+    }
+    return countPresent
+}
+
+fun getAbsentStudents(attendanceStatuses: List<String>): Int {
+    var countAbsent = 0
+    for (result in attendanceStatuses) {
+        if (result == "A" || result == "a") {
+            countAbsent++
+        }
+    }
+    return countAbsent
+}
+
+fun getLeaveStudents(attendanceStatuses: List<String>): Int {
+    var countLeave = 0
+    for (result in attendanceStatuses) {
+        if (result == "L" || result == "l") {
+            countLeave++
+        }
+    }
+    return countLeave
+}
 
 fun main() {
     println()
@@ -130,14 +159,21 @@ fun main() {
     do {
         println()
         print("Enter Student Name       :   ")
-        val studentName = readln()
+        val studentNameLocal = readln()
 
-        if (studentName.isBlank()) {
+        if (studentNameLocal.isBlank()) {
             continue
-        } else if (!studentName.equals("EXIT", ignoreCase = true)) {
-            studentNames.add(studentName)
+        } else if (!studentNameLocal.equals("EXIT", ignoreCase = true)) {
+
             print("Attendance Status[P/A/L] :   ")
-            attendanceStatuses.add(readln())
+            val attendanceStatusLocal = readln()
+            if (attendanceStatusLocal.isNotBlank()) {
+                studentNames.add(studentNameLocal)
+                attendanceStatuses.add(attendanceStatusLocal)
+            } else {
+                println("Attendance Cannot Be Blank...")
+                continue
+            }
         } else
             break
 
@@ -145,9 +181,25 @@ fun main() {
 
     println()
     println("---Attendance Report---")
+    println()
     for (report in studentNames.indices) {
         println("Student Name       : ${studentNames[report]}")
-        println("Attendance Status  : ${attendanceStatuses[report]}")
+        println("Attendance Status  : ${attendanceStatuses[report].uppercase()}")
         println()
     }
+    println("----------------")
+    println()
+    println("Total Students     :   ${studentNames.size}")
+
+    val countPresent = getPresentStudents(attendanceStatuses)
+    println("Present Students   :   $countPresent")
+
+    val countAbsent = getAbsentStudents(attendanceStatuses)
+    println("Absent Students    :   $countAbsent")
+
+    val countLeave = getLeaveStudents(attendanceStatuses)
+    println("Leave Students     :   $countLeave")
+    println()
+    println("----------------")
+
 }
