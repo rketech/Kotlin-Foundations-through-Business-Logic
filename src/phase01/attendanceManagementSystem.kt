@@ -170,13 +170,13 @@ fun getLeaveStudents(attendanceStatuses: List<String>): Int {
     return countLeave
 }
 
-fun printAttendanceReport(studentNames: MutableList<String>, attendanceStatuses: MutableList<String>) {
+fun printAttendanceReport(studentNames: List<String>, attendanceStatuses: List<String>) {
     println()
     println("---Attendance Report---")
     println()
-    for (report in studentNames.indices) {
-        println("Student Name       : ${studentNames[report]}")
-        println("Attendance Status  : ${attendanceStatuses[report].uppercase()}")
+    for (index in studentNames.indices) {
+        println("Student Name       : ${studentNames[index]}")
+        println("Attendance Status  : ${attendanceStatuses[index].uppercase()}")
         println()
     }
     println("----------------")
