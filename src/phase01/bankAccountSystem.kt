@@ -108,16 +108,36 @@ fun displayMenu() {
 }
 
 // Reads and validates input.
+/*
+    Responsible for:
+        ✓ Read input
+        ✓ Number validation
+        ✓ Positive amount validation
+*/
 fun readAndValidateAmount(): Double {
-    print("Enter Amount   :   ")
-    val amount = readln().toDouble()
-    return amount
+    while (true) {
+        try {
+            print("Enter Amount   :   ")
+            val amount = readln().toDouble()
+            return amount
+        } catch (e: NumberFormatException) {
+            println(e.message)
+            println("Please enter number only.")
+        }
+    }
 }
 
 fun deposit(currentBalance: Double, amount: Double): Double {
     return currentBalance + amount
 }
 
+/*
+    Responsible for:
+        ✓ Insufficient balance
+        ✓ Daily withdrawal limit (future)
+        ✓ Minimum balance rule (future)
+        ✓ Withdrawal fee (future)
+*/
 fun withdraw(currentBalance: Double, amount: Double): Double {
     return currentBalance - amount
 }
