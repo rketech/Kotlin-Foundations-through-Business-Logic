@@ -1,5 +1,7 @@
 package phase01
 
+import jdk.jfr.DataAmount
+
 /*
     Project Information
     ------------------
@@ -112,18 +114,16 @@ fun readValidateAmount(): Double {
     return amount
 }
 
-fun deposit(currentBalance: Double): Double {
-    val depositAmount = readValidateAmount()
-    return currentBalance + depositAmount
+fun deposit(currentBalance: Double, amount: Double): Double {
+    return currentBalance + amount
 }
 
-fun withdraw(currentBalance: Double): Double {
-    val withdrawAmount = readValidateAmount()
-    return currentBalance - withdrawAmount
+fun withdraw(currentBalance: Double, amount: Double): Double {
+    return currentBalance - amount
 }
 
-fun checkBalance(currentBalance: Double): Double {
-    return currentBalance
+fun checkBalance(currentBalance: Double) {
+    println("Current Balance    : $currentBalance")
 }
 
 fun exit() {
@@ -142,7 +142,7 @@ fun main() {
     println("---RK Bank---")
     println("-------------")
 
-    currentBalance = 10000.0
+    currentBalance = 0.0
 
     displayMenu()
     println()
@@ -151,19 +151,20 @@ fun main() {
 
     when (menuChoice) {
         "1" -> {
-            currentBalance = deposit(currentBalance)
+            val amount = readValidateAmount()
+            currentBalance = deposit(currentBalance, amount)
             println("Updated Balance After Deposit    :   $currentBalance")
         }
 
         "2" -> {
-            currentBalance= withdraw(currentBalance)
+            val amount = readValidateAmount()
+            currentBalance = withdraw(currentBalance, amount)
             println("Updated Balance After Withdrawal    :   $currentBalance")
 
         }
 
         "3" -> {
-            currentBalance=checkBalance(currentBalance)
-            println("Current Balance    :   $currentBalance")
+            checkBalance(currentBalance)
         }
 
         "4" -> {
