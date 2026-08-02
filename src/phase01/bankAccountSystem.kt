@@ -132,32 +132,22 @@ fun exit() {
     return
 }
 
-fun main() {
-    val accountHolderName: String
+fun operateOnMenu(menuChoice: String){
+
+    //val accountHolderName: String
     var currentBalance: Double
-    val menuChoice: String
     var amount: Double
-
-    println("-------------")
-    println("---RK Bank---")
-    println("-------------")
-
     currentBalance = 0.0
-
-    displayMenu()
-    println()
-    print("Enter Your Choice  :   ")
-    menuChoice = readln().trim()
 
     when (menuChoice) {
         "1" -> {
-            val amount = readValidateAmount()
+            amount = readValidateAmount()
             currentBalance = deposit(currentBalance, amount)
             println("Updated Balance After Deposit    :   $currentBalance")
         }
 
         "2" -> {
-            val amount = readValidateAmount()
+            amount = readValidateAmount()
             currentBalance = withdraw(currentBalance, amount)
             println("Updated Balance After Withdrawal    :   $currentBalance")
 
@@ -172,4 +162,19 @@ fun main() {
         }
 
     }
+}
+
+fun main() {
+    // var amount: Double
+
+    println("-------------")
+    println("---RK Bank---")
+    println("-------------")
+
+    displayMenu()
+    println()
+    print("Enter Your Choice  :   ")
+    val menuChoice: String = readln().trim()
+
+    operateOnMenu(menuChoice)
 }
