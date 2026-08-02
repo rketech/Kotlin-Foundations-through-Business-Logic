@@ -129,39 +129,44 @@ fun checkBalance(currentBalance: Double) {
 fun exit() {
     println("Exit Process Initiated....")
     println("Thank you for choosing RK Bank!")
-    return
 }
 
-fun operateOnMenu(menuChoice: String){
+fun operateOnMenu(currentBalance: Double) {
 
-    //val accountHolderName: String
-    var currentBalance: Double
+    var currentBalance = currentBalance
     var amount: Double
-    currentBalance = 0.0
 
-    when (menuChoice) {
-        "1" -> {
-            amount = readValidateAmount()
-            currentBalance = deposit(currentBalance, amount)
-            println("Updated Balance After Deposit    :   $currentBalance")
+    do {
+
+        displayMenu()
+        println()
+        print("Enter Your Choice  :   ")
+        val menuChoice: String = readln().trim()
+
+        when (menuChoice) {
+            "1" -> {
+                amount = readValidateAmount()
+                currentBalance = deposit(currentBalance, amount)
+                println("Updated Balance After Deposit    :   $currentBalance")
+            }
+
+            "2" -> {
+                amount = readValidateAmount()
+                currentBalance = withdraw(currentBalance, amount)
+                println("Updated Balance After Withdrawal    :   $currentBalance")
+
+            }
+
+            "3" -> {
+                checkBalance(currentBalance)
+            }
+
+            "4" -> {
+                exit()
+            }
         }
+    } while (menuChoice != "4")
 
-        "2" -> {
-            amount = readValidateAmount()
-            currentBalance = withdraw(currentBalance, amount)
-            println("Updated Balance After Withdrawal    :   $currentBalance")
-
-        }
-
-        "3" -> {
-            checkBalance(currentBalance)
-        }
-
-        "4" -> {
-            exit()
-        }
-
-    }
 }
 
 fun main() {
@@ -171,10 +176,10 @@ fun main() {
     println("---RK Bank---")
     println("-------------")
 
-    displayMenu()
-    println()
-    print("Enter Your Choice  :   ")
-    val menuChoice: String = readln().trim()
+    // Because main() represents the lifetime of the application.
+    // The bank account exists while the application is running.
+    // So this variable should live here:
+    val currentBalance = 0.0
 
-    operateOnMenu(menuChoice)
+    operateOnMenu(currentBalance)
 }
