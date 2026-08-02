@@ -108,7 +108,7 @@ fun displayMenu() {
 }
 
 // Reads and validates input.
-fun readValidateAmount(): Double {
+fun readAndValidateAmount(): Double {
     print("Enter Amount   :   ")
     val amount = readln().toDouble()
     return amount
@@ -122,8 +122,8 @@ fun withdraw(currentBalance: Double, amount: Double): Double {
     return currentBalance - amount
 }
 
-fun checkBalance(currentBalance: Double) {
-    println("Current Balance    : $currentBalance")
+fun checkBalance(initialBalance: Double) {
+    println("Current Balance    : $initialBalance")
 }
 
 fun exit() {
@@ -131,9 +131,9 @@ fun exit() {
     println("Thank you for choosing RK Bank!")
 }
 
-fun operateOnMenu(currentBalance: Double) {
+fun operateOnMenu(initialBalance: Double) {
 
-    var currentBalance = currentBalance
+    var currentBalance = initialBalance
     var amount: Double
 
     do {
@@ -145,13 +145,13 @@ fun operateOnMenu(currentBalance: Double) {
 
         when (menuChoice) {
             "1" -> {
-                amount = readValidateAmount()
+                amount = readAndValidateAmount()
                 currentBalance = deposit(currentBalance, amount)
                 println("Updated Balance After Deposit    :   $currentBalance")
             }
 
             "2" -> {
-                amount = readValidateAmount()
+                amount = readAndValidateAmount()
                 currentBalance = withdraw(currentBalance, amount)
                 println("Updated Balance After Withdrawal    :   $currentBalance")
 
@@ -163,6 +163,10 @@ fun operateOnMenu(currentBalance: Double) {
 
             "4" -> {
                 exit()
+            }
+
+            else -> {
+                println("Invalid Choice")
             }
         }
     } while (menuChoice != "4")
