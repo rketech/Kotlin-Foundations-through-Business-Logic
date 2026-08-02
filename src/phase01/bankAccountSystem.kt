@@ -97,6 +97,8 @@ import jdk.jfr.DataAmount
             ↓
         Exit
 */
+
+// Presentation
 fun displayMenu() {
     println()
     println("---Menu Choice---")
@@ -113,20 +115,36 @@ fun displayMenu() {
         ✓ Read input
         ✓ Number validation
         ✓ Positive amount validation
+
+        Architecture
+            Technical Problem
+                ↓
+            try-catch
+
+        Business Problem
+                ↓
+            if / when
 */
+
+// Read + Technical validation + Business validation
 fun readAndValidateAmount(): Double {
     while (true) {
         try {
             print("Enter Amount   :   ")
             val amount = readln().toDouble()
+            if (amount <= 0.0) {
+                println("Amount must be greater than zero.")
+                continue
+            }
             return amount
         } catch (e: NumberFormatException) {
-            println(e.message)
+            println(e)
             println("Please enter number only.")
         }
     }
 }
 
+// Deposit business logic
 fun deposit(currentBalance: Double, amount: Double): Double {
     return currentBalance + amount
 }
@@ -138,10 +156,19 @@ fun deposit(currentBalance: Double, amount: Double): Double {
         ✓ Minimum balance rule (future)
         ✓ Withdrawal fee (future)
 */
-fun withdraw(currentBalance: Double, amount: Double): Double {
-    return currentBalance - amount
+// Withdrawal business logic
+fun withdraw(currentBalance: Double): Double {
+    while (true) {
+        val amount = readAndValidateAmount()
+        if (amount > currentBalance) {
+            println("Insufficient balance")
+            continue
+        }
+            return currentBalance - amount
+    }
 }
 
+// Presentation
 fun checkBalance(initialBalance: Double) {
     println("Current Balance    : $initialBalance")
 }
@@ -151,6 +178,7 @@ fun exit() {
     println("Thank you for choosing RK Bank!")
 }
 
+// Application flow
 fun operateOnMenu(initialBalance: Double) {
 
     var currentBalance = initialBalance
@@ -171,8 +199,7 @@ fun operateOnMenu(initialBalance: Double) {
             }
 
             "2" -> {
-                amount = readAndValidateAmount()
-                currentBalance = withdraw(currentBalance, amount)
+                currentBalance = withdraw(currentBalance)
                 println("Updated Balance After Withdrawal    :   $currentBalance")
 
             }
@@ -193,6 +220,7 @@ fun operateOnMenu(initialBalance: Double) {
 
 }
 
+// Application entry point
 fun main() {
     // var amount: Double
 
