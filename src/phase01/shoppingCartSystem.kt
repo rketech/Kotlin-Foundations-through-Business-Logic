@@ -32,7 +32,11 @@ data class Product(
     val name: String,
     val price: Double,
     val quantity: Int
-)
+){
+    fun calculateTotal(): Double{
+        return quantity * price
+    }
+}
 
 fun addProduct(
     products: MutableList<Product>,
@@ -68,11 +72,11 @@ fun viewCart(
 }
 
 fun calculateBill(
-    products: MutableList<Product>
+    products: List<Product>
 ): Double {
     var total = 0.0
     for (product in products) {
-        total += product.price * product.quantity
+        total += product.calculateTotal()
     }
     return total
 }
