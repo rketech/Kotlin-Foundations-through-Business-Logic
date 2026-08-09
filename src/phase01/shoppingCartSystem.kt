@@ -31,9 +31,21 @@ Next Project (Day 11)
 data class Product(
     val name: String,
     val price: Double,
-    val quantity: Int
-){
-    fun calculateTotal(): Double{
+    private var quantity: Int
+) {
+    fun getQuantity(): Int {
+        return quantity
+    }
+
+    // Member Function
+    fun updateQuantity(newQuantity: Int) {
+        if (newQuantity > 0) {
+            quantity = newQuantity
+        }
+    }
+
+    // Member Function
+    fun calculateTotal(): Double {
         return quantity * price
     }
 }
@@ -51,12 +63,16 @@ fun addProduct(
     print("Enter Product Quantity   : ")
     val productQuantity = readln().toInt()
 
+    if (productQuantity<=0){
+        println("Quantity must be greater than zero.")
+        return
+    }
+
     val product = Product(
         name = productName,
         price = productPrice,
         quantity = productQuantity
     )
-
     products.add(product)
 }
 
@@ -66,7 +82,7 @@ fun viewCart(
     for (product in products) {
         println("Product Name       : ${product.name}")
         println("Product Price      : ${product.price}")
-        println("Product Quantity   : ${product.quantity}")
+        println("Product Quantity   : ${product.getQuantity()}")
         println()
     }
 }
