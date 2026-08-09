@@ -28,42 +28,51 @@ Next Project (Day 11)
     It's also much closer to a real e-commerce app, so every concept will directly transfer to Android screens later.
 */
 
+data class Product(
+    val name: String,
+    val price: Double,
+    val quantity: Int
+)
+
 fun addProduct(
-    productName: MutableList<String>,
-    productPrice: MutableList<Double>,
-    productQuantity: MutableList<Int>,
+    products: MutableList<Product>,
 ) {
     println()
     print("Enter Product Name       : ")
-    productName.add(readln())
+    val productName = readln()
 
     print("Enter Product Price      : ")
-    productPrice.add(readln().toDouble())
+    val productPrice = readln().toDouble()
 
     print("Enter Product Quantity   : ")
-    productQuantity.add(readln().toInt())
+    val productQuantity = readln().toInt()
+
+    val product = Product(
+        name = productName,
+        price = productPrice,
+        quantity = productQuantity
+    )
+
+    products.add(product)
 }
 
 fun viewCart(
-    productName: MutableList<String>,
-    productPrice: MutableList<Double>,
-    productQuantity: MutableList<Int>,
+    products: List<Product>
 ) {
-    for (index in productName.indices) {
-        println("Product Name       : ${productName[index]}")
-        println("Product Price      : ${productPrice[index]}")
-        println("Product Quantity   : ${productQuantity[index]}")
+    for (product in products) {
+        println("Product Name       : ${product.name}")
+        println("Product Price      : ${product.price}")
+        println("Product Quantity   : ${product.quantity}")
         println()
     }
 }
 
 fun calculateBill(
-    productPrice: MutableList<Double>,
-    productQuantity: MutableList<Int>
+    products: MutableList<Product>
 ): Double {
     var total = 0.0
-    for (index in productPrice.indices) {
-        total += productPrice[index] * productQuantity[index]
+    for (product in products) {
+        total += product.price * product.quantity
     }
     return total
 }
@@ -75,10 +84,10 @@ fun displayBill(totalBill: Double) {
     println("-------------------------")
 }
 
-fun displayTotalItems(productName: List<String>) {
+fun displayTotalItems(products: List<Product>) {
     println()
     println("-------------------------")
-    println("Total Items             :  ${productName.size}")
+    println("Total Items             :  ${products.size}")
     println("-------------------------")
 }
 
@@ -95,9 +104,7 @@ fun menuDisplay() {
 }
 
 fun operateMenu() {
-    val productNames = mutableListOf<String>()
-    val productPrices = mutableListOf<Double>()
-    val productQuantities = mutableListOf<Int>()
+    val products = mutableListOf<Product>()
 
     do {
         menuDisplay()
@@ -107,25 +114,25 @@ fun operateMenu() {
 
         when (menuChoice) {
             "1" -> {
-                addProduct(productNames, productPrices, productQuantities)
+                addProduct(products)
             }
 
             "2" -> {
-                if (productNames.isEmpty()) {
+                if (products.isEmpty()) {
                     println("Cart Is Empty")
                     continue
                 } else {
-                    viewCart(productNames, productPrices, productQuantities)
+                    viewCart(products)
                 }
             }
 
             "3" -> {
-                val totalBill = calculateBill(productPrices, productQuantities)
+                val totalBill = calculateBill(products)
                 displayBill(totalBill)
             }
 
             "4" -> {
-                displayTotalItems(productNames)
+                displayTotalItems(products)
             }
         }
     } while (menuChoice != "5")
