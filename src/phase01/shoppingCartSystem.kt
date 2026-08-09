@@ -71,14 +71,14 @@ fun calculateBill(
 fun displayBill(totalBill: Double) {
     println()
     println("-------------------------")
-    println("Total Bill             : ₹$totalBill")
+    println("Total Bill             :   ₹$totalBill")
     println("-------------------------")
 }
 
 fun displayTotalItems(productName: List<String>) {
     println()
     println("-------------------------")
-    println("Total Items             :${productName.size}")
+    println("Total Items             :  ${productName.size}")
     println("-------------------------")
 }
 
