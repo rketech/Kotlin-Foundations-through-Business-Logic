@@ -27,6 +27,9 @@ Payment_OPMS	method	    String	        val
 
 Conceptually:
 
+Customer_OPMS
+      │
+      ▼
 Order_OPMS
      │
      ├──────────────► Customer_OPMS
@@ -38,6 +41,13 @@ Order_OPMS
                          ├── Product_OPMS
                          ├── Product_OPMS
                          └── Product_OPMS
+
+Payment_OPMS
+      │
+      └── PaymentMethod
+             ├── CASH
+             ├── CARD
+             └── UPI
 
 This is a big step toward how real applications model data.
 */
@@ -70,5 +80,14 @@ data class Payment_OPMS(
     val amount: Double,
     val method: PaymentMethod
 )
+
+sealed class PaymentResult{
+    data class Success(val amount: Double) : PaymentResult()
+    data class Failure(val error: String): PaymentResult()
+    data object Pending: PaymentResult()
+}
+
+
+fun processPayment(payment: Payment_OPMS): PaymentResult{}
 
 fun main(){}
