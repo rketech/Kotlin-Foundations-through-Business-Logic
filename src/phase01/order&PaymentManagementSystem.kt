@@ -85,6 +85,10 @@ data class Product_OPMS(
     val quantity: Int,
 )
 
+fun Product_OPMS.displayShortInfo(){
+    println("$name - $price")
+}
+
 data class Order_OPMS(
     val order_ID: String,
     val customer: Customer_OPMS,
@@ -167,24 +171,8 @@ fun main() {
         Product_OPMS("Monitor", 7000.0, 3)
     )
 
-    val expensiveProducts = products.filter { it.price > 499 }
-
-    println(expensiveProducts)
-
-//    val productNames = expensiveProducts.map{it.name}
-    val productNames = products.map {it.name}
-    println(productNames)
-
-    val productTotalPricing = products.map{product-> product.price * product.quantity}
-    println(productTotalPricing)
-
-    products.forEach { product -> println(product.name) }
-
-    val productFind = products.find { it.name == "Monitor" }
-
-    if (productFind != null) {
-        println("Found : ${productFind.name}")
-    }else{
-        println("No products found")
+    println("Extension Function")
+    products.forEach {
+        it.displayShortInfo()
     }
 }
