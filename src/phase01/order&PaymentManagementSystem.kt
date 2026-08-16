@@ -150,14 +150,24 @@ fun displayPaymentResult(result: PaymentResult) {
 
 fun main() {
     val invalidPayment = Payment_OPMS(0.0, PaymentMethod.CASH)
-    val cashPayment = Payment_OPMS(500.0, PaymentMethod.CARD)
+    val cardPayment = Payment_OPMS(500.0, PaymentMethod.CARD)
     val upiPayment = Payment_OPMS(300.0, PaymentMethod.UPI)
 
     val result1 = processPayment(invalidPayment)
-    val result2 = processPayment(cashPayment)
+    val result2 = processPayment(cardPayment)
     val result3 = processPayment(upiPayment)
 
     displayPaymentResult(result1)
     displayPaymentResult(result2)
     displayPaymentResult(result3)
+
+    val products = listOf(
+        Product_OPMS("Keyboard", 500.0, 3),
+        Product_OPMS("Mouse", 250.0, 5),
+        Product_OPMS("Monitor", 7000.0, 3)
+    )
+
+    val expensiveProducts = products.filter { it.price > 499 }
+
+    println(expensiveProducts)
 }
